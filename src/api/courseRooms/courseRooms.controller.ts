@@ -9,7 +9,7 @@ export const assignRoomToCourse = async (req: Request, res: Response) => {
       [course_id, room_id]
     );
     res.status(201).json(result);
-  } catch (error) {
+  } catch (error: any) {
     res.status(500).json({ message: error.message });
   }
 };
@@ -22,7 +22,7 @@ export const getRoomForCourse = async (req: Request, res: Response) => {
       [course_id]
     );
     res.json(result);
-  } catch (error) {
+  } catch (error: any) {
     res.status(500).json({ message: error.message });
   }
 };
@@ -35,7 +35,7 @@ export const removeRoomAssignmentForCourse = async (req: Request, res: Response)
       [course_id]
     );
     res.json(result);
-  } catch (error) {
+  } catch (error: any) {
     res.status(500).json({ message: error.message });
   }
 };

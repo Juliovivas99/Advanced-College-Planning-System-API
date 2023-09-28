@@ -12,7 +12,7 @@ export const createCourse = async (req: Request, res: Response) => {
     );
     
     res.status(201).json(result);
-  } catch (error) {
+  } catch (error: any) {
     res.status(500).json({ message: error.message });
   }
 };
@@ -21,7 +21,7 @@ export const getAllCourses = async (_req: Request, res: Response) => {
   try {
     const [courses] = await pool.query('SELECT * FROM courses');
     res.json(courses);
-  } catch (error) {
+  } catch (error: any) {
     res.status(500).json({ message: error.message });
   }
 };
@@ -32,12 +32,12 @@ export const getCourseById = async (req: Request, res: Response) => {
   try {
     const [course] = await pool.query('SELECT * FROM courses WHERE course_id = ?', [id]);
     
-    if (course.length) {
+    if (Array.isArray(course) && course.length > 0) { 
       res.json(course[0]);
     } else {
       res.status(404).json({ message: 'Course not found' });
     }
-  } catch (error) {
+  } catch (error: any) {
     res.status(500).json({ message: error.message });
   }
 };
@@ -53,7 +53,7 @@ export const updateCourseById = async (req: Request, res: Response) => {
     );
     
     res.json(result);
-  } catch (error) {
+  } catch (error: any) {
     res.status(500).json({ message: error.message });
   }
 };
@@ -64,7 +64,7 @@ export const deleteCourseById = async (req: Request, res: Response) => {
   try {
     const [result] = await pool.execute('DELETE FROM courses WHERE course_id = ?', [id]);
     res.json(result);
-  } catch (error) {
+  } catch (error: any) {
     res.status(500).json({ message: error.message });
   }
 };

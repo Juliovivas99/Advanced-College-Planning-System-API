@@ -9,7 +9,7 @@ export const assignTeacherToCourse = async (req: Request, res: Response) => {
       [course_id, teacher_id]
     );
     res.status(201).json(result);
-  } catch (error) {
+  } catch (error: any) {
     res.status(500).json({ message: error.message });
   }
 };
@@ -22,7 +22,7 @@ export const getTeachersForCourse = async (req: Request, res: Response) => {
       [course_id]
     );
     res.json(teachers);
-  } catch (error) {
+  } catch (error: any) {
     res.status(500).json({ message: error.message });
   }
 };
@@ -35,7 +35,7 @@ export const removeTeacherAssignmentFromCourse = async (req: Request, res: Respo
       [course_id, teacher_id]
     );
     res.json(result);
-  } catch (error) {
+  } catch (error: any) {
     res.status(500).json({ message: error.message });
   }
 };
