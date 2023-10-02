@@ -26,4 +26,7 @@ router.use('/teachers', teacherRoutes);
 router.use('/course-rooms', courseRoomsRoutes);
 router.use('/course-teachers', courseTeachersRoutes);
 
+
+
+
 export default router;

@@ -11,4 +11,9 @@ const pool = mysql.createPool({
   connectionLimit: 10,
 });
 
+pool.query('SELECT 1')
+  .then(() => console.log('Connected to the MySQL database.'))
+  .catch((err) => console.error('Error connecting to the MySQL database.', err));
+
+
 export default pool;
