@@ -5,10 +5,10 @@ import roomRoutes from './rooms/rooms.routes';
 import teacherRoutes from './teachers/teacher.routes';
 import courseRoomsRoutes from './courseRooms/courseRooms.routes'; 
 import courseTeachersRoutes from './courseTeachers/courseTeachers.routes';
+import scheduleRoutes from './schedule/schedule.routes'
 
 
 import MessageResponse from '../interfaces/MessageResponse';
-import emojis from './emojis';
 
 const router = express.Router();
 
@@ -18,14 +18,13 @@ router.get<{}, MessageResponse>('/', (req, res) => {
   });
 });
 
-router.use('/emojis', emojis);
 router.use('/students', studentRoutes);
 router.use('/courses', courseRoutes);
 router.use('/rooms', roomRoutes);
 router.use('/teachers', teacherRoutes);
 router.use('/course-rooms', courseRoomsRoutes);
 router.use('/course-teachers', courseTeachersRoutes);
-
+router.use('/schedule', scheduleRoutes);
 
 
 
